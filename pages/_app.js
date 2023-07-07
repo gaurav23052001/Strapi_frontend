@@ -1,6 +1,7 @@
 import '@/styles/globals.css'
 import Navbar from '@/components/navbar'
 import { useEffect, useState } from 'react'
+import Footer from "../components/Footer"
 
 
 export default function App({ Component, pageProps }) {
@@ -36,5 +37,5 @@ export default function App({ Component, pageProps }) {
     setCart([])
   }
 
-  return <><Navbar key={reloadKey} cart={cart}/><Component  cart={cart} addToCart={addToCart} removeToCart={removeToCart} cleanCart={cleanCart}  {...pageProps} /></>
+  return <><Navbar key={reloadKey} cart={cart}/><Component  cart={cart} addToCart={addToCart} removeToCart={removeToCart} cleanCart={cleanCart}  {...pageProps} /><Footer/></>
 }

@@ -6,7 +6,7 @@ import axios from "axios";
 const Slug = ({product, addToCart}) => {
         const router = useRouter()
         const {Slug} = router.query
-
+  // console.log(product);
   return (
       <div>
 
@@ -82,7 +82,7 @@ const Slug = ({product, addToCart}) => {
         <div className="flex">
           <span className="title-font font-medium text-2xl text-gray-900">{ '₹ '+product[0]['attributes']['price']}</span>
           <div className="flex mx-2" >
-          <button onClick={()=>{addToCart(Slug,1)}} className="flex ml-auto text-white bg-indigo-500 border-0 py-2 mx-2 px-3 focus:outline-none hover:bg-indigo-600 rounded">Cart</button>
+          <button onClick={()=>{addToCart(router.query.slug,1)}} className="flex ml-auto text-white bg-indigo-500 border-0 py-2 mx-2 px-3 focus:outline-none hover:bg-indigo-600 rounded">Cart</button>
           <button onClick={()=>{router.push('/checkout')}} className="flex ml-auto text-white bg-indigo-500 border-0 py-2 mx-2 px-3 focus:outline-none hover:bg-indigo-600 rounded">Buy Now</button>
           </div>
           <button className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
@@ -102,7 +102,7 @@ const Slug = ({product, addToCart}) => {
 export async function getServerSideProps(context) {
     let headers = {"Authorization": "bearer 399124295508cf8ecfa448e28dd3a9f115e01a0e7034ea260134bf3cffe965711e6a6cbb891723b6ba15134136566bc2ac1f468e18230d39eb11da38b07e5fbffbbb76d8882c5fc9a1a2958aeeb1dc8af3d4bcfac37d1a24377bba680772bbb24c92db13719bbde8e70e6a190e7629913a6e3c090035e649b760c2ebb877fd80" };
   
-  const res = await axios.get('http://localhost:1337/api/products?filters[slug]='+context.query.slug,{ headers });
+  const res = await axios.get('http://localhost:1337/api/products?filters[slug]='+context.query.slug + "&populate=*",{ headers });
   
     const product =res.data.data;
     console.log();
