@@ -2,11 +2,14 @@ import '@/styles/globals.css'
 import Navbar from '@/components/navbar'
 import { useEffect, useState } from 'react'
 import Footer from "../components/Footer"
+import Head from 'next/head'
 
 
 export default function App({ Component, pageProps }) {
   useEffect(()=>{
-
+    <Head>
+      <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0"/>``
+    </Head>
   
     return ()=>{
    
