@@ -100,13 +100,12 @@ const Slug = ({product, addToCart}) => {
 
 
 export async function getServerSideProps(context) {
-    let headers = {"Authorization": "bearer 399124295508cf8ecfa448e28dd3a9f115e01a0e7034ea260134bf3cffe965711e6a6cbb891723b6ba15134136566bc2ac1f468e18230d39eb11da38b07e5fbffbbb76d8882c5fc9a1a2958aeeb1dc8af3d4bcfac37d1a24377bba680772bbb24c92db13719bbde8e70e6a190e7629913a6e3c090035e649b760c2ebb877fd80" };
+    let headers = {"Authorization": "bearer f8713dddc041d2b85a642d8788a52ccff01aa08d51198fcf2d77be2c936ee583e4b341b4e10ea3e51034649518e8d27054d23a1695754b998703dd02a6e2793799d8efef519294ec655cd67fd696056868322d40078f905b30aec9f2cf4872216f74b3e7d4b2c79f278681e61ec1b60f51f61dd09e2aa35477d6d579f2715d6d" };
   
-  const res = await axios.get('http://localhost:1337/api/products?filters[slug]='+context.query.slug + "&populate=*",{ headers });
+  const res = await axios.get('http://127.0.0.1:1337/api/products?filters[slug]='+context.query.slug + "&populate=*",{ headers });
   
     const product =res.data.data;
-    console.log();
-  
+
     return {
       props: {
         product,
